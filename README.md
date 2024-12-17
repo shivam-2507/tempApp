@@ -28,7 +28,7 @@ A weather station project that measures temperature, humidity, and heat index us
    ```
 
 ### ESP32 Setup
-1. **PlatformIO** is used for ESP32 development. 
+1. **PlatformIO** and **Visual Studio Code** is used for ESP32 development. 
 2. The ESP32 code is located in the `src/main.cpp` file.
 3. To connect the ESP32 to Wi-Fi, open `src/main.cpp` and enter your **Wi-Fi SSID** and **password** in the designated fields:
 
