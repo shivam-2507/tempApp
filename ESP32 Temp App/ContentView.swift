@@ -15,7 +15,7 @@ struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
 
     func fetchData() {
-        guard let url = URL(string: "http://192.168.1.122/data") else {
+        guard let url = URL(string: "http://espurlhere/data") else {
             showErrorMessage("Invalid URL")
             return
         }
