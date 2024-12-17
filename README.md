@@ -38,4 +38,6 @@ A weather station project that measures temperature, humidity, and heat index us
    guard let url = URL(string: "http://<ESP32_IP>/data") else {
     showErrorMessage("Invalid URL")
     return
-   }
+   
+
+
