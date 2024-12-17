@@ -42,10 +42,10 @@ A weather station project that measures temperature, humidity, and heat index us
 - Breadboard and jumper wires
 
 ### Software Requirements
-	•	PlatformIO for ESP32 development
-	•	Xcode for iOS app development
-	•	Libraries:
-	•	DHT (for the DHT11 sensor)
-	•	LiquidCrystal_I2C (for the LCD)
-	•	ESPAsyncWebServer (for the RESTful API)
+- PlatformIO for ESP32 development
+- Xcode for iOS app development
+- Libraries:
+	- DHT (for the DHT11 sensor)
+	- LiquidCrystal_I2C (for the LCD)
+	- ESPAsyncWebServer (for the RESTful API)
 
