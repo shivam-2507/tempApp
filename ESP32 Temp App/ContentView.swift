@@ -9,28 +9,25 @@ struct SensorData: Codable {
 struct ContentView: View {
     @State private var sensorData: SensorData?
     @State private var errorMessage: String?
+    @State private var showAlert: Bool = false
     @State private var currentTab: Int = 0
     
     @Environment(\.colorScheme) var colorScheme
 
     func fetchData() {
         guard let url = URL(string: "http://192.168.1.122/data") else {
-            errorMessage = "Invalid URL"
+            showErrorMessage("Invalid URL")
             return
         }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
-                DispatchQueue.main.async {
-                    errorMessage = "Failed to fetch data: \(error.localizedDescription)"
-                }
+                showErrorMessage("Failed to fetch data: \(error.localizedDescription)")
                 return
             }
             
             guard let data = data else {
-                DispatchQueue.main.async {
-                    errorMessage = "No data received"
-                }
+                showErrorMessage("No data received")
                 return
             }
             
@@ -44,11 +41,16 @@ struct ContentView: View {
                     errorMessage = nil
                 }
             } catch {
-                DispatchQueue.main.async {
-                    errorMessage = "Failed to decode JSON: \(error.localizedDescription)"
-                }
+                showErrorMessage("Failed to decode JSON: \(error.localizedDescription)")
             }
         }.resume()
+    }
+
+    func showErrorMessage(_ message: String) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            errorMessage = message
+            showAlert = true
+        }
     }
     
     func getBackgroundColor(for temperature: Float) -> Color {
@@ -79,12 +81,6 @@ struct ContentView: View {
             }
             
             VStack {
-                if let errorMessage = errorMessage {
-                    Text(errorMessage)
-                        .foregroundColor(.red)
-                        .padding()
-                }
-
                 TabView(selection: $currentTab) {
                     VStack {
                         if let sensorData = sensorData {
@@ -153,6 +149,9 @@ struct ContentView: View {
             }
         }
         .animation(.easeInOut, value: currentTab)
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Error"), message: Text(errorMessage ?? "Unknown error"), dismissButton: .default(Text("OK")))
+        }
     }
 
     var refreshButton: some View {
