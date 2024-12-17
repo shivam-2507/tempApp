@@ -51,12 +51,12 @@ A weather station project that measures temperature, humidity, and heat index us
 2. The app code is located in ESP32 Temp App/ContentView.swift.
 3. In ContentView.swift, replace the placeholder <ESP32_IP> in the fetchData() function with the IP address of your ESP32 from the previous step:
 
-```swift
-guard let url = URL(string: "http://<ESP32_IP>/data") else {
-    showErrorMessage("Invalid URL")
-    return
-}
-```
+	```swift
+	guard let url = URL(string: "http://<ESP32_IP>/data") else {
+ 	     showErrorMessage("Invalid URL")
+ 	     return
+	}
+	```
    
 4. This will enable the iOS app to fetch and display the data from the ESP32.
 5. The app can also be downloaded to any iOS device by following the instruction in the Xcode IDE.
