@@ -27,3 +27,14 @@ A weather station project that measures temperature, humidity, and heat index us
    ```cpp
    const char* ssid = "your_wifi_ssid";  // Enter your Wi-Fi SSID here
    const char* password = "your_wifi_password";  // Enter your Wi-Fi password here
+4.	To get the ESP32’s IP address, run the Wi-Fi Test file located in the src folder. This will print the IP address to the serial monitor. Paste this IP address into the iOS app to establish the connection
+###iOS App Setup
+1.	Xcode is used for the iOS app development.
+2.	2.	The app code is located in ESP32 Temp App/ContentView.swift.
+3.	In ContentView.swift, replace the placeholder <ESP32_IP> in the fetchData() function with the IP address of your ESP32 from the previous step:
+
+   ```swift
+   guard let url = URL(string: "http://<ESP32_IP>/data") else {
+    showErrorMessage("Invalid URL")
+    return
+   }
