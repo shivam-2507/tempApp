@@ -59,6 +59,7 @@ guard let url = URL(string: "http://<ESP32_IP>/data") else {
 ```
    
 4. This will enable the iOS app to fetch and display the data from the ESP32.
+5. The app can also be downloaded to any iOS device by following the instruction in the Xcode IDE.
 
 ---
 
